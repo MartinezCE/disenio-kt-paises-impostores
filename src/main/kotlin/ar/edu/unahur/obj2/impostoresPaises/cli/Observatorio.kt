@@ -33,7 +33,7 @@ object Observatorio {
         return paisA.potencialesAliados(paisB)
     }
 
-    fun irDeCompas(paisUno: String, paisDos: String): Boolean {
+    fun irDeCompras(paisUno: String, paisDos: String): Boolean {
         var paisA : Pais? = listadoPaises.firstOrNull{it -> it.nombre == paisUno}
         var paisB : Pais? = listadoPaises.firstOrNull{it -> it.nombre == paisDos}
         if(paisA == null || paisB== null){
@@ -51,6 +51,8 @@ object Observatorio {
         }
         return  paisA.cuantoEquivale(paisB, monto)
     }
-
+    fun agreagarPaises(paises: MutableList<Pais>) {
+        listadoPaises.addAll(paises);
+    }
 
 }

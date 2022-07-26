@@ -10,9 +10,12 @@ class Pais(
     var continente: String,
     var codigoMoneda: String,
     var cotizacionDolar: Double,
-    var paisesLimitrofes: MutableList<Pais>,
-    var bloqueRegionales: MutableList<String>,
-    var idiomasOficiales: MutableList<String>
+
+
+    val paisesLimitrofes: MutableList<Pais> = mutableListOf<Pais>(),
+    val bloqueRegionales: MutableList<String> = mutableListOf<String>(),
+    val idiomasOficiales: MutableList<String> = mutableListOf<String>(),
+
 
 ) {
 
@@ -23,7 +26,7 @@ class Pais(
         }catch (e: Exception) {
             throw Exception(e.message)
         }
-        
+
     }
 
     fun esUnaIsla(): Boolean {
@@ -78,7 +81,7 @@ class Pais(
 
     fun necesitanTraduccion(pais: Pais): Boolean {
         try {
-            return pais.idiomasOficiales.any { it in idiomasOficiales }
+            return !(pais.idiomasOficiales.any { it in idiomasOficiales })
         }catch (e: Exception) {
             throw Exception(e.message)
         }
