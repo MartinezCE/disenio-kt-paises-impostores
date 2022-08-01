@@ -1,6 +1,16 @@
 package ar.edu.unahur.obj2.impostoresPaises.cli
+class Observatorio private constructor(){
+    companion object{
+        private var instance :Observatorio ? = null
 
-object Observatorio {
+        fun getInstance() = synchronized(this){
+            if(instance == null)
+                instance=Observatorio()
+            instance
+        }
+
+
+    }
     var listadoPaises: MutableList<Pais> = mutableListOf<Pais>();
 
 
@@ -54,5 +64,7 @@ object Observatorio {
     fun agreagarPaises(paises: MutableList<Pais>) {
         listadoPaises.addAll(paises);
     }
+
+
 
 }

@@ -5,6 +5,7 @@ import io.kotest.matchers.booleans.shouldBeTrue
 
 class ObservatorioTest : DescribeSpec({
     describe("Observatorio"){
+        Observatorio.getInstance()
         var brasil: Pais = Pais(
             "Brasil",
             "BRL",
@@ -62,27 +63,28 @@ class ObservatorioTest : DescribeSpec({
 
 
         var listadoDePaises : MutableList<Pais> = mutableListOf(brasil, argentina, uruguay);
-       Observatorio.agreagarPaises(listadoDePaises)
+      // Observatorio.agreagarPaises(listadoDePaises)
+        Observatorio.Companion.getInstance()?.agreagarPaises(listadoDePaises)
 
 
         it("Son limitrofes") {
-            var result = Observatorio.sonLimitrofes("Argentina", "Uruguay");
-            result.shouldBeTrue();
+            var result = Observatorio.Companion.getInstance()?.sonLimitrofes("Argentina", "Uruguay");
+            result?.shouldBeTrue();
         }
 
         it("Son necesitanTraduccion") {
-            var result = Observatorio.necesitanTraduccion("Argentina", "Brasil");
-            result.shouldBeTrue();
+            var result = Observatorio.Companion.getInstance()?.necesitanTraduccion("Argentina", "Brasil");
+            result?.shouldBeTrue();
         }
 
         it("Son potencialesAliados") {
-            var result = Observatorio.potencialesAliados("Argentina", "Uruguay");
-            result.shouldBeTrue();
+            var result = Observatorio.Companion.getInstance()?.potencialesAliados("Argentina", "Uruguay");
+            result?.shouldBeFalse();
         }
 
         it("Son irDeCompras") {
-            var result = Observatorio.irDeCompras("Argentina", "Chile")
-            result.shouldBeFalse();
+            var result = Observatorio.Companion.getInstance()?.irDeCompras("Argentina", "Chile")
+            result?.shouldBeFalse();
         }
     }
 
